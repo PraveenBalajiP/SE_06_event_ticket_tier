@@ -1,18 +1,59 @@
-# L6_L7_06 — Event Ticket Tier
+## Lab 6 — Code and Branch Coverage Analysis
 
-Lab 6: Code and Branch Coverage
+### Objective
+To analyse code coverage and branch coverage of the Event Ticket Tier application using pytest and pytest-cov, and to design test cases that exercise statements, decision branches, and edge cases.
 
-## About
+### Application
+The application contains two functions:
 
-A small Python module that prices event tickets by seating tier, order volume, and promotional codes, guards against fraudulent booking batches, and monitors gate turnstile throughput.
+- `process_ticket_manifest()` — processes confirmed ticket manifests, applies ticket-tier pricing, promotional discounts, fraud handling, lounge charges, and service tax.
+- `monitor_gate_flow()` — monitors turnstile entry rates and detects consecutive high-congestion readings.
 
-## Files
+### Test Deliverables
 
-| File | Description |
-|------|-------------|
-| `event_ticket_tier.py` | The module under test |
-| `test_event_ticket.py` | Starter test file |
+| File | Purpose |
+|---|---|
+| `event_ticket_tier.py` | Application source code |
+| `CodeCoverageTest_06_event_ticket_tier.py` | Test cases for code coverage |
+| `BranchCoverageTest_06_event_ticket_tier.py` | Test cases for branch coverage |
+| `test_event_ticket.py` | Original combined test suite |
 
-Keep all your Lab 6 work in this `LAB6` folder. Lab 7 will be added to this repo later.
+### Coverage Results
 
-Refer to the lab handout for instructions.
+| Metric | Result |
+|---|---:|
+| Tests passed | 33 |
+| Statements | 57 |
+| Missing statements | 0 |
+| Statement coverage | 100% |
+| Branches | 40 |
+| Partial branches | 0 |
+| Branch coverage | 100% |
+
+### Commands to Run
+
+**Code coverage:**
+
+```bash
+python -m pytest -v CodeCoverageTest_06_event_ticket_tier.py --cov=event_ticket_tier --cov-report=term-missing
+```
+
+**Branch coverage:**
+
+```bash
+python -m pytest -v BranchCoverageTest_06_event_ticket_tier.py --cov=event_ticket_tier --cov-branch --cov-report=term-missing
+```
+
+**HTML coverage report:**
+
+```bash
+python -m pytest --cov=event_ticket_tier --cov-branch --cov-report=html
+```
+
+### Evidence
+
+Terminal screenshots and the HTML coverage report are maintained in the `screenshots/` and `htmlcov/` directories.
+
+### Conclusion
+
+The test suite achieved 100% statement coverage and 100% branch coverage for the application. All 33 test executions passed, exceeding the minimum 90% coverage target specified in the Lab 6 handout.
